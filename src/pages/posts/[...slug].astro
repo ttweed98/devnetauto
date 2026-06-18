@@ -1,0 +1,44 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content, remarkPluginFrontmatter } = await render(post);
+
+const fmt = (d) => d.toISOString().slice(0, 10);
+const words = remarkPluginFrontmatter?.words ?? null;
+const readMin = words ? Math.max(1, Math.round(words / 220)) : null;
+---
+
+<Base
+  title={post.data.title}
+  description={post.data.description}
+  canonical={post.data.canonicalUrl}
+  ogType="article"
+>
+  <article class="article">
+    <div class="wrap">
+      <a class="back" href="/">cd ..</a>
+      <header class="article-head">
+        <div class="meta">
+          <span>{fmt(post.data.pubDate)}</span>
+          {readMin && <span>{readMin} min</span>}
+          {post.data.tags.map((t) => <span class="tag">#{t}</span>)}
+        </div>
+        <h1>{post.data.title}</h1>
+        <p class="dek">{post.data.description}</p>
+      </header>
+      <div class="prose">
+        <Content />
+      </div>
+    </div>
+  </article>
+</Base>

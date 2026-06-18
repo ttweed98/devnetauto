@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://devnetauto.com/sitemap-index.xml

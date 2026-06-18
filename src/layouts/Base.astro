@@ -1,0 +1,74 @@
+---
+import '../styles/global.css';
+import { SITE } from '../site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  /* For articles: pass an absolute canonical if syndicated elsewhere. */
+  canonical?: string;
+  ogType?: string;
+}
+
+const {
+  title,
+  description = SITE.description,
+  canonical,
+  ogType = 'website',
+} = Astro.props;
+
+const pageTitle = title ? `${title} — ${SITE.title}` : `${SITE.title} — ${SITE.tagline}`;
+const canonicalURL = canonical ?? new URL(Astro.url.pathname, Astro.site).href;
+const year = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={SITE.title}
+      href={new URL('rss.xml', Astro.site)}
+    />
+    <meta property="og:title" content={title ?? SITE.title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="/" aria-label={`${SITE.title} home`}>
+          <span class="dim">{SITE.promptUser}@</span><span>{SITE.name}</span><span class="dim">:~</span><span class="prompt">$</span><span class="cursor" aria-hidden="true"></span>
+        </a>
+        <nav class="nav" aria-label="Primary">
+          {SITE.nav.map((item) => <a href={item.href}>{item.label}</a>)}
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <span>© {year} {SITE.author}</span>
+        <span class="links">
+          <a href={SITE.social.linkedin} rel="me">linkedin</a>
+          <a href={SITE.social.github} rel="me">github</a>
+          <a href="/rss.xml">rss</a>
+        </span>
+      </div>
+    </footer>
+  </body>
+</html>

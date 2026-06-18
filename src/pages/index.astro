@@ -1,0 +1,41 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../site';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('posts', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const fmt = (d) =>
+  d.toISOString().slice(0, 10); // YYYY-MM-DD, terminal-style
+---
+
+<Base>
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow"><span class="add">+</span> field notes from production</p>
+      <h1>{SITE.tagline}</h1>
+      <p>{SITE.description}</p>
+    </div>
+  </section>
+
+  <section class="list">
+    <div class="wrap">
+      <h2 class="section">writing/</h2>
+      {posts.map((post) => (
+        <a class="entry" href={`/posts/${post.id}/`}>
+          <span class="gutter" aria-hidden="true">+</span>
+          <div class="body">
+            <h3 class="title">{post.data.title}</h3>
+            <p class="dek">{post.data.description}</p>
+            <div class="meta">
+              <span>{fmt(post.data.pubDate)}</span>
+              {post.data.tags.map((t) => <span class="tag">#{t}</span>)}
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</Base>

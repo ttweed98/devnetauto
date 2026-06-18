@@ -1,0 +1,46 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../site';
+---
+
+<Base title="About" description={`About ${SITE.author} and ${SITE.title}.`}>
+  <article class="article">
+    <div class="wrap">
+      <a class="back" href="/">cd ..</a>
+      <header class="article-head">
+        <div class="meta"><span>whoami</span></div>
+        <h1>About</h1>
+        <p class="dek">{SITE.tagline}</p>
+      </header>
+      <div class="prose">
+        <p>
+          I'm {SITE.author}, an infrastructure automation engineer. This site is
+          where I write down what actually happens when network automation meets
+          a real, multi-tenant production estate — the merge conflicts, the
+          silent ordering bugs, the migrations that hold thousands of devices in
+          a single transaction.
+        </p>
+        <p>
+          Most of what I publish here is a <strong>war story</strong>: a concrete
+          problem, what I tried, what fixed it, and the lesson that generalizes.
+          The stack I live in day to day is Nautobot — Golden Config, SSoT/CMDB
+          reconciliation, SD-WAN design generation, ZTP — plus the CI/CD around
+          it (GitHub Actions, containerized executors).
+        </p>
+        <p>
+          Everything here is written in my own words about patterns and lessons,
+          not about any employer's proprietary systems. If something I've written
+          helped you, or you want to compare notes, find me on
+          <a href={SITE.social.linkedin}>LinkedIn</a>.
+        </p>
+        <h2>What I write about</h2>
+        <ul>
+          <li>Nautobot in production: data models, jobs, plugins, the SSoT pattern</li>
+          <li>Golden Config: intended vs actual state, compliance, remediation</li>
+          <li>Migrations that can't take downtime</li>
+          <li>The pipelines and CI that make all of it repeatable</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+</Base>
