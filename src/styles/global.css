@@ -351,3 +351,20 @@ body {
   border: 1px solid var(--accent);
   border-radius: 6px;
 }
+
+/* --- updated brand / logo lockup --- */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  text-decoration: none;
+}
+.brand-mark { display: block; width: 34px; height: 34px; border-radius: 9px; }
+.brand-word {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.brand-word .net { color: var(--accent); }
