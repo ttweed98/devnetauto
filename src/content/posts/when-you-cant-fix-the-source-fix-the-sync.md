@@ -41,6 +41,8 @@ We had an app in Nautobot that synchronized data out of the CMDB to keep our sou
 The breakthrough was realizing I didn't have to repair the broken field at all. I could derive each site's region from a field that *was* reliable -- the site's country -- and let the sync compute the right answer every time, instead of trusting the field that was supposed to hold it. After a few weeks of work and a fair number of bugs, the regional data started coming back clean and accurate. That was our first real breakthrough toward a source of truth we could trust.
 
 
+![A diagram: the unreliable region field set aside in favor of the reliable country field, mapped to the correct region](/images/derive-region-from-country.svg)
+
 ## Cisco by a hundred names
 
 Devices brought their own special chaos: the manufacturer field. Every time a new software train or hardware line comes out, the vendor seems to label itself a little differently in the asset data. By the time I looked, we had more than forty different spellings that all meant "Cisco." On their own, harmless. But when the sync pulled them in, it treated each distinct string as a distinct vendor -- and dutifully created a brand-new manufacturer entry for every one. We ended up with dozens of "Ciscos" cluttering the source of truth, none of them agreeing.
@@ -70,5 +72,6 @@ Here's why all of this matters more than it might seem. Everything downstream in
 So the data most of us inherit isn't the data we'd have designed. It will be inconsistent, misplaced, and partly wrong -- usually because someone upstream was handed a field and no guidance, and made their best guess. Our job isn't to wait for it to become perfect. It never will. Our job is to find out what's actually accurate, validate it against every source we can, make the best call we can, and build the mechanism to keep improving it -- even when that means filtering and correcting data we don't own and can't fix at the source.
 
 It's an evolution, not a one-time cleanup. And it's the single most important piece of building real network automation. Get the data right, and your automation makes you faster at being right. Get it wrong, and you already know how that ends.
+
 
 

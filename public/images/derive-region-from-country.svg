@@ -1,0 +1,57 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 470" font-family="'Space Grotesk','Helvetica Neue',Arial,sans-serif">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0c1c2b"/><stop offset="100%" stop-color="#070f18"/>
+    </linearGradient>
+    <linearGradient id="hub2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#16384a"/><stop offset="100%" stop-color="#0b2030"/>
+    </linearGradient>
+    <linearGradient id="cardM2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#21303d"/><stop offset="100%" stop-color="#121f2a"/>
+    </linearGradient>
+    <linearGradient id="cardC2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#16322a"/><stop offset="100%" stop-color="#0e231d"/>
+    </linearGradient>
+    <pattern id="grid2" width="32" height="32" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.1" fill="#ffffff" opacity="0.035"/>
+    </pattern>
+    <filter id="glow2" x="-70%" y="-70%" width="240%" height="240%">
+      <feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow2" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="5" stdDeviation="8" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+    <marker id="ar2" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5fe0d9"/>
+    </marker>
+  </defs>
+  <rect width="1000" height="470" fill="url(#bg2)"/>
+  <rect width="1000" height="470" fill="url(#grid2)"/>
+  <text x="54" y="58" font-family="'JetBrains Mono','DejaVu Sans Mono',monospace" font-size="20" fill="#34c5c9">// derive from what's reliable</text>
+  <text x="54" y="120" font-family="'JetBrains Mono','DejaVu Sans Mono',monospace" font-size="15" fill="#6b8190">THE FIELD THAT SHOULD HOLD IT</text>
+  <g filter="url(#shadow2)">
+    <rect x="54" y="140" width="240" height="74" rx="14" fill="url(#cardM2)" stroke="#ff6b6b" stroke-width="1.8" stroke-dasharray="7 5"/>
+  </g>
+  <text x="174" y="187" text-anchor="middle" font-size="30" font-weight="600" fill="#9aa6b0">region</text>
+  <line x1="112" y1="178" x2="236" y2="178" stroke="#ff6b6b" stroke-width="3" filter="url(#glow2)"/>
+  <text x="330" y="186" font-family="'JetBrains Mono','DejaVu Sans Mono',monospace" font-size="19" fill="#ff9a9a"><tspan font-weight="700">&#10007;</tspan>  inconsistent &#183; empty &#183; wrong</text>
+  <text x="54" y="298" font-family="'JetBrains Mono','DejaVu Sans Mono',monospace" font-size="15" fill="#6b8190">THE FIELD THAT IS RELIABLE</text>
+  <g filter="url(#shadow2)">
+    <rect x="54" y="318" width="180" height="74" rx="14" fill="url(#cardC2)" stroke="#3ddc84" stroke-width="1.8"/>
+  </g>
+  <rect x="54" y="318" width="6" height="74" rx="3" fill="#3ddc84"/>
+  <text x="150" y="364" text-anchor="middle" font-size="28" font-weight="600" fill="#eef4f7">country</text>
+  <line x1="242" y1="355" x2="298" y2="355" stroke="#5fe0d9" stroke-width="3" filter="url(#glow2)" marker-end="url(#ar2)"/>
+  <g filter="url(#shadow2)">
+    <rect x="306" y="318" width="250" height="74" rx="14" fill="url(#hub2)" stroke="#34c5c9" stroke-width="2"/>
+  </g>
+  <text x="431" y="352" text-anchor="middle" font-family="'JetBrains Mono','DejaVu Sans Mono',monospace" font-size="19" fill="#5fe0d9">country &#8594; region</text>
+  <text x="431" y="376" text-anchor="middle" font-family="'JetBrains Mono','DejaVu Sans Mono',monospace" font-size="14" fill="#8b9eac">mapping</text>
+  <line x1="564" y1="355" x2="620" y2="355" stroke="#5fe0d9" stroke-width="3" filter="url(#glow2)" marker-end="url(#ar2)"/>
+  <g filter="url(#shadow2)">
+    <rect x="628" y="318" width="240" height="74" rx="14" fill="url(#cardC2)" stroke="#3ddc84" stroke-width="1.8"/>
+  </g>
+  <rect x="628" y="318" width="6" height="74" rx="3" fill="#3ddc84"/>
+  <text x="754" y="352" text-anchor="middle" font-size="25" font-weight="600" fill="#eef4f7">correct region</text>
+  <text x="754" y="377" text-anchor="middle" font-family="'JetBrains Mono','DejaVu Sans Mono',monospace" font-size="14" fill="#3ddc84">every time</text>
+</svg>
